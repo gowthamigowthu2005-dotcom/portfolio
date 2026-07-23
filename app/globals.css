@@ -1,0 +1,80 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600&display=swap');
+
+@import "tailwindcss";
+
+/* ─── Design Tokens ──────────────────────────────────────────── */
+:root {
+  --bg: #2e3a6e;
+  --primary: #bcafd2;
+  --secondary: #355156;
+  --accent: #970f1e;
+  --text: #FFFFFF;
+
+  --glass-bg: rgba(255, 255, 255, 0.04);
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --glass-blur: blur(20px);
+}
+
+/* ─── Base ───────────────────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html, body {
+  width: 100%;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 17px; /* Bumped base font size across the whole website */
+}
+
+body {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ─── Scrollbar ──────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: #000207; }
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(to bottom, #e5e4e7, #76bcc7);
+  border-radius: 99px;
+}
+
+/* ─── Selection ──────────────────────────────────────────────── */
+::selection {
+  background: rgba(85, 61, 128, 0.35);
+  color: white;
+}
+
+/* ─── Glassmorphism ──────────────────────────────────────────── */
+.glass-card {
+  background: rgba(255, 255, 255, 0.035);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* ─── Animated gradient mesh background ──────────────────────── */
+.mesh-bg {
+  background-color: #050816;
+  background-image:
+    radial-gradient(at 40% 20%, rgba(124, 58, 237, 0.15) 0px, transparent 50%),
+    radial-gradient(at 80% 0%, rgba(229, 234, 234, 0.1) 0px, transparent 50%),
+    radial-gradient(at 0% 50%, rgba(168, 172, 173, 0.08) 0px, transparent 50%),
+    radial-gradient(at 80% 100%, rgba(166, 80, 146, 0.12) 0px, transparent 50%);
+}
+
+/* ─── Typography & Utils ─────────────────────────────────────── */
+.font-mono { font-family: 'JetBrains Mono', monospace; }
+
+a, button { transition: all 0.2s ease-in-out; }
