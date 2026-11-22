@@ -1,7 +1,7 @@
 "use client";
 import { motion } from "framer-motion";
 import SectionWrapper from "@/components/SectionWrapper";
-import { PROJECTS } from "@/lib/constants";
+import { PROJECTS, getAssetPath } from "@/lib/constants";
 import { FiGithub, FiExternalLink } from "react-icons/fi";
 
 export default function Projects() {
@@ -25,7 +25,7 @@ export default function Projects() {
         </motion.div>
 
         {/* Grid of Projects */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {PROJECTS.map((project, i) => (
             <motion.div
               key={project.id}
@@ -37,10 +37,23 @@ export default function Projects() {
             >
               <div>
                 {/* Banner */}
-                <div className={`h-48 bg-violet-900/40 relative p-6 flex items-end justify-between overflow-hidden`}>
-                  <span className="text-white/25 text-6xl font-black select-none">
+                <div className={`h-48 bg-gradient-to-r ${project.gradient || "from-violet-900/50 to-indigo-900/50"} relative p-6 flex items-end justify-between overflow-hidden`}>
+                  {project.image && (
+                    <img
+                      src={getAssetPath(project.image)}
+                      alt={project.title}
+                      className="absolute inset-0 w-full h-full object-cover opacity-50 group-hover:scale-105 group-hover:opacity-65 transition-all duration-300"
+                    />
+                  )}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent" />
+                  <span className="relative z-10 text-white/35 text-6xl font-black select-none">
                     0{project.id}
                   </span>
+                  {project.category && (
+                    <span className="relative z-10 px-3 py-1 rounded-full text-xs font-semibold bg-white/10 backdrop-blur-md text-white/90 border border-white/15">
+                      {project.category}
+                    </span>
+                  )}
                 </div>
 
                 {/* Body */}

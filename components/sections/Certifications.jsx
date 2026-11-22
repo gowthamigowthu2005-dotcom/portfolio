@@ -23,7 +23,7 @@ export default function Certifications() {
           <div className="mt-3 mx-auto w-14 h-1 rounded-full bg-pink-500" />
         </motion.div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
           {CERTIFICATIONS.map((cert, i) => (
             <motion.div
               key={cert.id}
@@ -37,11 +37,19 @@ export default function Certifications() {
                 {/* Certificate Image Tag */}
                 <div className="w-full h-36 rounded-xl mb-4 overflow-hidden bg-white/5 border border-white/10 flex items-center justify-center relative">
                   {cert.image ? (
-                    <img
-                      src={getAssetPath(cert.image)}
-                      alt={cert.title}
-                      className="w-full h-full object-cover rounded-xl transition-transform duration-300 group-hover:scale-105"
-                    />
+                    <a
+                      href={getAssetPath(cert.image)}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="w-full h-full block cursor-pointer"
+                      title="Click to view full certificate"
+                    >
+                      <img
+                        src={getAssetPath(cert.image)}
+                        alt={cert.title}
+                        className="w-full h-full object-cover rounded-xl transition-transform duration-300 group-hover:scale-105"
+                      />
+                    </a>
                   ) : (
                     <div className="w-full h-full flex flex-col items-center justify-center p-3 text-center bg-gradient-to-br from-amber-500/10 to-orange-500/5">
                       <div className="w-10 h-10 rounded-xl flex items-center justify-center text-xl bg-amber-500/20 text-amber-400 mb-1">
